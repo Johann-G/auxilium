@@ -1,4 +1,4 @@
-<div class="col-12" style="background-color: #AABAD9;">
+<div id="chatroom-container" class="col-12" style="background-color: #AABAD9;">
 
   <div class="row d-flex align-items-center justify-content-center">
     <div class="col-2">
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div class="row d-flex">
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>" class="row d-flex">
     <% @messages.each do |message| %>
       <%= render "shared/message", message: message %>
     <% end %>
