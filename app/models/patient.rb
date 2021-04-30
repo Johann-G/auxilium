@@ -17,6 +17,7 @@ class Patient < ApplicationRecord
 
   after_create :new_chatroom
   after_create :new_videoroom
+  after_create :send_invitation_mail
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
@@ -40,5 +41,9 @@ class Patient < ApplicationRecord
 
   def new_videoroom
     Videoroom.create(patient: self, doctor: self.doctor)
+  end
+
+  def send_invitation_mail
+    PatientMailer.invitation(self).deliver
   end
 end
