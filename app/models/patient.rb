@@ -4,6 +4,8 @@ class Patient < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attr_accessor :skip_password_validation
+
   has_many :consultations
   belongs_to :doctor
 
@@ -13,11 +15,11 @@ class Patient < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :first_name, :last_name, :phone_number, :city, :zip, :street, :avs_number, presence: true
+  validates :first_name, :last_name, presence: true
 
   after_create :new_chatroom
   after_create :new_videoroom
-  after_create :send_invitation_mail
+  # after_create :send_invitation_mail
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
@@ -43,7 +45,14 @@ class Patient < ApplicationRecord
     Videoroom.create(patient: self, doctor: self.doctor)
   end
 
-  def send_invitation_mail
-    PatientMailer.invitation(self).deliver
+  # def send_invitation_mail
+  #   PatientMailer.invitation(self).deliver_now
+  # end
+
+  protected
+
+  def password_required?
+    return false if skip_password_validation
   end
+
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/user', to: "pages#dashboard", :as => :user_root TODO redefine after login redirections
 
   namespace :doctor do
-    resources :patients, only: [ :index, :show ] do
+    resources :patients, only: [ :index, :show, :new, :create ] do
       resources :consultations, only: [ :index, :create ]
     end
     resources :consultations, only: [ :show, :edit, :update ] do

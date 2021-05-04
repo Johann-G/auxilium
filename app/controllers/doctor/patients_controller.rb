@@ -14,10 +14,30 @@ class Doctor::PatientsController < ApplicationController
     @new_consultation = Consultation.new
   end
 
+  def new
+    @patient = Patient.new
+  end
+
+  def create
+    @patient = Patient.new(patient_params)
+    @patient.doctor = current_doctor
+    @patient.skip_password_validation = true
+    if @patient.save
+      PatientMailer.invitation(@patient).deliver_now
+      redirect_to doctor_patients_path
+    else
+      render "new"
+    end
+  end
+
   private
 
   def set_patient
     @patient = Patient.find(params[:id]) if Patient.find(params[:id]).doctor == current_doctor
+  end
+
+  def patient_params
+    params.require(:patient).permit(:first_name, :last_name, :email)
   end
 end
 
