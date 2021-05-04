@@ -23,7 +23,8 @@ class Doctor::PatientsController < ApplicationController
     @patient.doctor = current_doctor
     @patient.skip_password_validation = true
     if @patient.save
-      PatientMailer.invitation(@patient).deliver_now
+      @patient.invite!
+      # PatientMailer.invitation(@patient).deliver_now
       redirect_to doctor_patients_path
     else
       render "new"

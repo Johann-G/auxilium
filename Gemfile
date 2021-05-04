@@ -22,6 +22,7 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
 
 # internationalization i18n I18n
 gem 'rails-i18n'

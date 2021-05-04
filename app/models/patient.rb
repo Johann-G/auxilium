@@ -2,7 +2,7 @@ class Patient < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :invitable
 
   attr_accessor :skip_password_validation
 
@@ -19,7 +19,6 @@ class Patient < ApplicationRecord
 
   after_create :new_chatroom
   after_create :new_videoroom
-  # after_create :send_invitation_mail
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
@@ -45,11 +44,7 @@ class Patient < ApplicationRecord
     Videoroom.create(patient: self, doctor: self.doctor)
   end
 
-  # def send_invitation_mail
-  #   PatientMailer.invitation(self).deliver_now
-  # end
-
-  protected
+  private
 
   def password_required?
     return false if skip_password_validation
