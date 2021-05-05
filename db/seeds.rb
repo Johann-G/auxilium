@@ -346,7 +346,7 @@ my_patient_20 = Patient.new(
 )
 my_patient_20.save!
 
-puts "Creating 20 new patients"
+puts "Creating 20 new patient"
 puts "--------------------------------------"
 
 my_consultation_1 = Consultation.new(

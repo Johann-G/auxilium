@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :doctors, path: "doctor", controllers: { sessions: "doctor/sessions" }
-  devise_for :patients, path: "patients", controllers: { sessions: "patients/sessions" }
+  devise_for :patients, path: "patient", controllers: { sessions: "patient/sessions" }
 
   root to: "pages#home"
 

@@ -17,7 +17,7 @@ fr:
     content-card3: "Prenez rendez vous en ligne, 24h/24 et 7j/7, pour une consultation vidéo."
 
   patients:
-    title-patients: "Mes patients"
+    title-patients: "Mes patient"
     title-schedule: "Mon emploi du temps"
     
   
@@ -27,7 +27,7 @@ fr:
     link-messaging: "Messagerie"
     link-schedule-meeting: "Planifier un rendez-vous"
     show-profil-doctor_html: "Afficher profil <br>praticien "
-    show-profil-patient_html: "Afficher profil <br>patients "
+    show-profil-patient_html: "Afficher profil <br>patient "
     next-consultation: "Prochaine consultation :"
     the: "Le"
     at: "à"

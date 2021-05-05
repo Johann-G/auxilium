@@ -5,10 +5,10 @@ class PatientMailer < ApplicationMailer
   #
   #   en.patient_mailer.invitation.subject
   #
-  # def invitation(patients)
-  #   @patients = patients
+  # def invitation(patient)
+  #   @patient = patient
   #
-  #   mail(to: patients.email, subject: "Welcome to YouMind")
+  #   mail(to: patient.email, subject: "Welcome to YouMind")
   # end
 
   def consultation(patient, consultation)

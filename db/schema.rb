@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_105729) do
     t.index ["messageable_type", "messageable_id"], name: "index_messages_on_messageable_type_and_messageable_id"
   end
 
-  create_table "patients", force: :cascade do |t|
+  create_table "patient", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_105729) do
   add_foreign_key "consultation_medications", "consultations"
   add_foreign_key "consultation_medications", "medications"
   add_foreign_key "messages", "chatrooms"
-  add_foreign_key "patients", "doctors"
+  add_foreign_key "patient", "doctors"
   add_foreign_key "videorooms", "doctors"
-  add_foreign_key "videorooms", "patients"
+  add_foreign_key "videorooms", "patient"
 end
