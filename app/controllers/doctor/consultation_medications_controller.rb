@@ -1,5 +1,5 @@
 class Doctor::ConsultationMedicationsController < ApplicationController
-  before_action :authenticate_doctor!
+  before_action :authenticate_doctor!, raise: false
 
   before_action :set_consultation, only: [ :create ]
   before_action :set_consultation_medication, only: [ :destroy, :update]

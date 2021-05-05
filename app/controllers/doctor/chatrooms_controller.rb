@@ -1,7 +1,7 @@
 class Doctor::ChatroomsController < ApplicationController
   include ChatroomsControllerConcern
 
-  before_action :authenticate_doctor!
+  before_action :authenticate_doctor!, raise: false
 
   before_action :set_chatroom, only: [:show]
 

@@ -1,7 +1,7 @@
 class Doctor::MessagesController < ApplicationController
   include MessagesControllerConcern
 
-  before_action :authenticate_doctor!
+  before_action :authenticate_doctor!, raise: false
 
   before_action :set_chatroom, only: [:create]
 

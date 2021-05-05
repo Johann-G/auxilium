@@ -1,7 +1,7 @@
 class VideoroomsController < ApplicationController
   include VideoroomsControllerConcern
 
-  before_action :authenticate_patient!
+  before_action :authenticate_patient!, raise: false
 
   before_action :set_videoroom, only: [:show]
 

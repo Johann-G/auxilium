@@ -1,7 +1,7 @@
 class ConsultationsController < ApplicationController
   include ConsultationsControllerConcern
 
-  before_action :authenticate_patient!
+  before_action :authenticate_patient!, raise: false
 
   before_action :set_patient, only: [ :index, :show ]
   before_action :set_consultation, only: [ :show ]

@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
   include PatientsControllerConcern
 
-  before_action :authenticate_patient!
+  before_action :authenticate_patient!, raise: false
 
   before_action :set_patient, only: [ :dashboard, :activate ]
 
