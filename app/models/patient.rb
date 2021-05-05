@@ -1,4 +1,6 @@
 class Patient < ApplicationRecord
+
+  include AASM
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,6 +21,20 @@ class Patient < ApplicationRecord
 
   after_create :new_chatroom
   after_create :new_videoroom
+
+  aasm column: 'status' do
+    state :draft, initial: true
+    state :active
+    state :inactive
+
+    event :activate do
+      transitions from: :draft, to: :active
+    end
+
+    event :deactivate do
+      transitions from: :active, to: :inactive
+    end
+  end
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"

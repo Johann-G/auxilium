@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_161432) do
+ActiveRecord::Schema.define(version: 2021_05_05_105729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_161432) do
     t.integer "invitation_limit"
     t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.string "status", default: "draft"
     t.index ["doctor_id"], name: "index_patients_on_doctor_id"
     t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["invitation_token"], name: "index_patients_on_invitation_token", unique: true
