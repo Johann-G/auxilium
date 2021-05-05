@@ -5,9 +5,16 @@ class PatientMailer < ApplicationMailer
   #
   #   en.patient_mailer.invitation.subject
   #
-  def invitation(patient)
-    @patient = patient
+  # def invitation(patient)
+  #   @patient = patient
+  #
+  #   mail(to: patient.email, subject: "Welcome to YouMind")
+  # end
 
-    mail(to: patient.email, subject: "Welcome to YouMind")
+  def consultation(patient, consultation)
+    @patient = patient
+    @consultation = consultation
+
+    mail(to: patient.email, subject: "New consultation")
   end
 end
