@@ -2,10 +2,10 @@ class SmsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # @patient = Patient.find(params[:patient_id])
+    # @patients = Patient.find(params[:patient_id])
     # @doctor = current_user
-    # unless @patient.consultations.where(public_report: nil).nil?
-    #   @next_consultation = @patient.consultations.where(public_report: nil).first
+    # unless @patients.consultations.where(public_report: nil).nil?
+    #   @next_consultation = @patients.consultations.where(public_report: nil).first
     # end
 
     require 'nexmo'
