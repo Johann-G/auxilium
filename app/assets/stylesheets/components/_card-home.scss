@@ -16,16 +16,13 @@
   .card-home-img.img-1{
     @include bg-card();
 
-    background: url("https://res.cloudinary.com/kyulol/image/upload/v1598354131/chat-video_tqdur6.jpg") center;
   }
   .card-home-img.img-2{
     @include bg-card();
-    background: url("https://res.cloudinary.com/kyulol/image/upload/v1598354131/files_bwqrmq.jpg") center;
 
   }
   .card-home-img.img-3{
     @include bg-card();
-    background: url("https://res.cloudinary.com/kyulol/image/upload/v1598354131/calendar_pvaoqz.jpg") center;
 
   }
   .card-home-content{

@@ -82,7 +82,6 @@ min-height: calc(100vh - 80px);
   overflow: scroll;
 }
 .avatar-dasboard{
-  background: url("https://res.cloudinary.com/kyulol/image/upload/v1598604119/profile_ejuesw.png") center;
   background-size: contain;
   background-repeat: no-repeat;
   width: 50px;
@@ -90,7 +89,6 @@ min-height: calc(100vh - 80px);
   border-radius: 50%;
 }
 .avatar-card-index{
-  background: url("https://res.cloudinary.com/kyulol/image/upload/v1598604119/profile_ejuesw.png") center;
   background-size: contain;
   background-repeat: no-repeat;
   width: 70px;
@@ -172,11 +170,9 @@ hr.style1 {
   position: absolute;
   top: 10px;
   left: 15px;
-  background: url("https://res.cloudinary.com/kyulol/image/upload/v1598538915/arrow-leftpastel_hm0sdr.png") center;
   background-repeat: no-repeat;
   background-size: contain;
   &hover{
-    background: url("https://res.cloudinary.com/kyulol/image/upload/v1598538915/arrow-leftpastel_hm0sdr.png") center;
     background-repeat: no-repeat;
     background-size: contain;
   }

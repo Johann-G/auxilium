@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/user', to: "pages#dashboard", :as => :user_root TODO redefine after login redirections
 
   namespace :doctor do
-    resources :patients, only: [ :index, :show ] do
+    resources :patients, only: [ :index, :show, :new, :create ] do
       resources :consultations, only: [ :index, :create ]
     end
     resources :consultations, only: [ :show, :edit, :update ] do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: "patients#dashboard"
+  patch "/activate", to: "patients#activate"
   resources :consultations, only: [ :index, :show ]
   resources :chatrooms, only: [ :show ] do
     resources :messages, only: [:create]
@@ -33,7 +34,12 @@ Rails.application.routes.draw do
   get "/500", :to => "errors#internal_error"
 
   require "sidekiq/web"
-  authenticate :user, ->(user) { user.admin? } do
+  authenticated :doctor do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  # require "sidekiq/web"
+  # authenticate :user, ->(user) { user.admin? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 end

@@ -1,8 +1,12 @@
 class Patient < ApplicationRecord
+
+  include AASM
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :invitable
+
+  attr_accessor :skip_password_validation
 
   has_many :consultations
   belongs_to :doctor
@@ -13,10 +17,28 @@ class Patient < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :first_name, :last_name, :phone_number, :city, :zip, :street, :avs_number, presence: true
+  validates :first_name, :last_name, presence: true
 
   after_create :new_chatroom
   after_create :new_videoroom
+
+  aasm column: 'status' do
+    state :draft, initial: true
+    state :active
+    state :inactive
+
+    event :activate do
+      transitions from: :draft, to: :active
+    end
+
+    event :deactivate do
+      transitions from: :active, to: :inactive
+    end
+  end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
@@ -41,4 +63,11 @@ class Patient < ApplicationRecord
   def new_videoroom
     Videoroom.create(patient: self, doctor: self.doctor)
   end
+
+  private
+
+  def password_required?
+    return false if skip_password_validation
+  end
+
 end

@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.2.0)
+      concurrent-ruby (~> 1.0)
     actioncable (6.0.3.2)
       actionpack (= 6.0.3.2)
       nio4r (~> 2.0)
@@ -89,6 +91,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.5)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
@@ -108,6 +113,10 @@ GEM
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -272,14 +281,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   autoprefixer-rails
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.16.0)
   devise
+  devise_invitable (~> 2.0.0)
   dotenv-rails
   jbuilder (~> 2.7)
+  letter_opener
   listen (~> 3.2)
   nexmo
   pg (>= 0.18, < 2.0)
@@ -307,4 +319,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.4
+   2.2.14

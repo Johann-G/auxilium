@@ -26,7 +26,6 @@
 }
 
 .page-404{
-  @include base-error("https://res.cloudinary.com/kyulol/image/upload/v1599041665/404-v2_lpteu5.jpg");
   
   .error-div{
   @include content-error();
@@ -34,14 +33,12 @@
   }
 }
 .page-500{
-  @include base-error("https://res.cloudinary.com/kyulol/image/upload/v1599041593/500-v2_inavxh.jpg");
   .error-div{
     @include content-error();
   
     }
 }
 .page-422{
-  @include base-error("https://res.cloudinary.com/kyulol/image/upload/v1599042344/422-v2_zuqmls.jpg");
   .error-div{
     @include content-error();
   
