@@ -34,7 +34,12 @@ Rails.application.routes.draw do
   get "/500", :to => "errors#internal_error"
 
   require "sidekiq/web"
-  authenticate :user, ->(user) { user.admin? } do
+  authenticated :doctor do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  # require "sidekiq/web"
+  # authenticate :user, ->(user) { user.admin? } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 end
