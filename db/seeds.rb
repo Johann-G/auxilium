@@ -33,8 +33,6 @@ my_doctor_1 = Doctor.new(
   first_name: "Hugo",
   last_name: "Vidal"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599040891/1_2_zf5art.png')
-my_doctor_1.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_doctor_1.save!
 
 my_doctor_2 = Doctor.new(
@@ -43,8 +41,6 @@ my_doctor_2 = Doctor.new(
   first_name: "Adrien",
   last_name: "Dre"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599040891/1_2_zf5art.png')
-my_doctor_2.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_doctor_2.save!
 
 puts "1 new doctor created"
@@ -63,8 +59,6 @@ my_patient_1 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599040951/jerem_fsfakh.png')
-my_patient_1.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_1.save!
 
 my_patient_2 = Patient.new(
@@ -80,8 +74,6 @@ my_patient_2 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Adriana-Companile_k294ef.jpg')
-my_patient_2.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_2.save!
 
 my_patient_3 = Patient.new(
@@ -97,8 +89,6 @@ my_patient_3 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Adrien_Richard_klz8rq.jpg')
-my_patient_3.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_3.save!
 
 my_patient_4 = Patient.new(
@@ -114,8 +104,6 @@ my_patient_4 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041166/Andreas_Thomas_ruyacr.jpg')
-my_patient_4.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_4.save!
 
 my_patient_5 = Patient.new(
@@ -131,8 +119,6 @@ my_patient_5 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Audree_Samuel_hfc3pf.jpg')
-my_patient_5.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_5.save!
 
 my_patient_6 = Patient.new(
@@ -148,8 +134,6 @@ my_patient_6 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Ange_Dubois_rvwctz.jpg')
-my_patient_6.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_6.save!
 
 my_patient_7 = Patient.new(
@@ -165,8 +149,6 @@ my_patient_7 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Beatrice_Olivier_paqwva.jpg')
-my_patient_7.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_7.save!
 
 my_patient_8 = Patient.new(
@@ -182,8 +164,6 @@ my_patient_8 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Dorothee_Vincent_mchhiv.jpg')
-my_patient_8.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_8.save!
 
 my_patient_9 = Patient.new(
@@ -199,8 +179,6 @@ my_patient_9 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Ellis_Myers_zkyvn9.jpg')
-my_patient_9.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_9.save!
 
 my_patient_10 = Patient.new(
@@ -216,8 +194,6 @@ my_patient_10 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Gerard_Martinez_msohyr.jpg')
-my_patient_10.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_10.save!
 
 my_patient_11 = Patient.new(
@@ -233,8 +209,6 @@ my_patient_11 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041167/Hayley_Robert_gvxyvi.jpg')
-my_patient_11.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_11.save!
 
 my_patient_12 = Patient.new(
@@ -250,8 +224,6 @@ my_patient_12 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041168/Jenna_Diaz_ugv28c.jpg')
-my_patient_12.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_12.save!
 
 my_patient_13 = Patient.new(
@@ -267,8 +239,6 @@ my_patient_13 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041168/Lilianne_Bernard_a2imgn.jpg')
-my_patient_13.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_13.save!
 
 my_patient_14 = Patient.new(
@@ -284,8 +254,6 @@ my_patient_14 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041168/Marc_Austin_lvertg.jpg')
-my_patient_14.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_14.save!
 
 my_patient_15 = Patient.new(
@@ -301,8 +269,6 @@ my_patient_15 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041168/Marcelle_Patel_iyax1s.jpg')
-my_patient_15.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_15.save!
 
 my_patient_16 = Patient.new(
@@ -318,8 +284,6 @@ my_patient_16 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041168/Remi_Martinez_wucavo.jpg')
-my_patient_16.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_16.save!
 
 my_patient_17 = Patient.new(
@@ -335,8 +299,6 @@ my_patient_17 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041169/Shantay_Martin_ewhpmg.jpg')
-my_patient_17.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_17.save!
 
 my_patient_18 = Patient.new(
@@ -352,8 +314,6 @@ my_patient_18 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041169/Toni_Moreau_al0pxe.jpg')
-my_patient_18.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_18.save!
 
 my_patient_19 = Patient.new(
@@ -369,8 +329,6 @@ my_patient_19 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041166/Xiang_Simon_pvnuqz.jpg')
-my_patient_19.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_19.save!
 
 my_patient_20 = Patient.new(
@@ -386,8 +344,6 @@ my_patient_20 = Patient.new(
   doctor: Doctor.first,
   status: "active"
 )
-photo = URI.open('https://res.cloudinary.com/dsszx2brq/image/upload/v1599041166/Zachariah_Martin_pbamps.jpg')
-my_patient_20.photo.attach(io: photo, filename: 'nes.png', content_type: 'image/png')
 my_patient_20.save!
 
 puts "Creating 20 new patients"

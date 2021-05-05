@@ -81,13 +81,11 @@
           <% if @last_consultation.present? %>
           <% doctor_signed_in? ? path = doctor_consultation_path(@last_consultation) : path = consultation_path(@last_consultation) %>
           <%= link_to path do %>
-            <%= image_tag "https://res.cloudinary.com/kyulol/image/upload/v1598880705/last-consult_qhvtsy.png", class:"mt-2", style:"height: 50px;" %>
             <div>
               <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Last consultation</p>
             </div>
           <% end %>
           <% else %>
-            <%= image_tag "https://res.cloudinary.com/kyulol/image/upload/v1598880705/last-consult_qhvtsy.png", class:"mt-2", style:"height: 50px;" %>
             <div>
               <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Last consultation</p>
             </div>
@@ -99,7 +97,6 @@
         <div style="text-align: center">
           <% doctor_signed_in? ? path = doctor_patient_consultations_path(@patient) : path = consultations_path %>
           <%= link_to path do %>
-            <%= image_tag "https://res.cloudinary.com/kyulol/image/upload/v1598880705/all-consult_db2etz.png", class:"mt-2", style:"height: 50px;" %>
             <div>
               <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Consultation history</p>
             </div>
