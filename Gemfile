@@ -44,9 +44,9 @@ gem "nexmo"
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
-gem 'cloudinary', '~> 1.16.0'
-
 gem 'aasm'
+
+gem 'mimemagic', '~> 0.3.10'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
