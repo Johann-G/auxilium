@@ -8,14 +8,14 @@ class Patient < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
-  has_many :consultations
+  has_many :consultations, dependent: :destroy
   belongs_to :doctor
 
-  has_one :chatroom
-  has_one :videoroom
-  has_many :messages, as: :messageable
+  has_one :chatroom, dependent: :destroy
+  has_one :videoroom, dependent: :destroy
+  has_many :messages, as: :messageable, dependent: :destroy
 
-  has_one_attached :photo
+  # has_one_attached :photo
 
   validates :first_name, :last_name, presence: true
 
