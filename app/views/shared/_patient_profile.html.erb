@@ -1,17 +1,23 @@
 <div class="container" style="margin-top: 70px;">
 
-  <div class="col-2">
-    <% doctor_signed_in? ? path = doctor_patients_path : path = root_path %>
-    <%= link_to path do %>
-      <i class="fas fa-chevron-circle-left fa-3x mt-3" style="color: #395579;"></i>
-    <% end %>
+  <div class="row mb-5">
+    <div class="col-2">
+      <% doctor_signed_in? ? path = doctor_patients_path : path = root_path %>
+      <%= link_to path do %>
+        <i class="fas fa-chevron-circle-left fa-3x mt-3 mb-3" style="color: #395579;"></i>
+      <% end %>
+    </div>
+    <div class="col-8 mt-3">
+      <h2 class="card-text font-weight-bold text-center mb-2">Dashboard</h2>
+    </div>
   </div>
+
 
   <% if doctor_signed_in? %>
     <div class="row justify-content-center">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h1 class="card-title"><%= @patient.full_name %></h1>
+          <h2 class="card-title"><%= @patient.full_name %></h2>
           <p class="card-text"><i class="fas fa-phone mr-3"></i><%= @patient.phone_number %></p>
           <p class="card-text"><i class="fas fa-notes-medical mr-3"></i><%= @patient.avs_number %></p>
           <p class="card-text"><i class="fas fa-address-card mr-3"></i><%= @patient.full_address %></p>
@@ -48,63 +54,32 @@
       <% end %>
     </div>
   <% else %>
-    <div class="row justify-content-around">
-      <div class="card col-11 d-flex justify-content-center mt-3" style="height: 100px; background-color: white; border-radius: 8px; border: none;" >
-        <div>
-          <h2 class="card-text font-weight-bold text-center mb-2">Next consultation</h2>
-          <p class="text-center"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%></p>
-        </div>
+
+    <div class="mt-5 mb-5">
+      <div class="row justify-content-center align-items-center">
+        <h2 class="col-10">Consultations</h2>
+
+        <% if doctor_signed_in? %>
+          <%= link_to new_doctor_patient_consultation_path(@patient) do %>
+            <i class="fas fa-plus-square fa-2x "></i>
+          <% end %>
+        <% end %>
       </div>
+
+      <ul class="list-group mt-3">
+        <% @upcoming_consultations.each do |upcoming_consultation| %>
+          <li class="list-group-item mt-3 pl-3" style="background-color: #AABAD9;"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%><span class="badge badge-primary badge-pill ml-5">UPCOMING</span></li>
+        <% end %>
+        <% @past_consultations.each do |past_consultation| %>
+          <%= link_to doctor_consultation_path(past_consultation) do %>
+            <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
 
-    <div class="row justify-content-around">
-      <div class="card col-5 d-flex justify-content-center mt-3" style="height: 120px; background-color: #eddbd8; border-radius: 8px; border: none;" >
-        <div style="text-align: center">
-          <% if @last_consultation.present? %>
-            <% doctor_signed_in? ? path = doctor_consultation_path(@last_consultation) : path = consultation_path(@last_consultation) %>
-            <%= link_to path do %>
-              <div>
-                <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Last consultation</p>
-              </div>
-            <% end %>
-          <% else %>
-            <div>
-              <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Last consultation</p>
-            </div>
-          <% end %>
-        </div>
-      </div>
 
-      <div class="card col-5 d-flex justify-content-center mt-3" style="height: 120px; background-color: #eddbd8; border-radius: 8px; border: none;" >
-        <div style="text-align: center">
-          <% doctor_signed_in? ? path = doctor_patient_consultations_path(@patient) : path = consultations_path %>
-          <%= link_to path do %>
-            <div>
-              <p class="card-text mt-3 font-weight-bold text-center" style="color: #395579;">Consultation history</p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
 
-    <% if doctor_signed_in? %>
-      <div class="col-12 mt-5">
-        <h2 class="card-text font-weight-bold text-center">Book consultation</h2>
-      </div>
-      <div class="row justify-content-center">
-        <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >
-          <div class="mt-3">
-            <%= simple_form_for [ @patient, @new_consultation ], url: doctor_patient_consultations_path(@patient) do |f| %>
-              <%= f.input :date, as: :datetime, label: false, html5: true, class: "mt-3" %>
-              <div class='d-flex justify-content-end'>
-                <%= f.submit "Book", class: "btn btn-primary mt-2 mb-3" %>
-              </div>
-            <% end %>
-          </div>
-
-        </div>
-      </div>
-    <% end %>
   <% end %>
 
 </div>

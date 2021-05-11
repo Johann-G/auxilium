@@ -1,14 +1,29 @@
-<nav class="d-flex justify-content-around align-items-center p-2 navbar navbar-default navbar-fixed-top" style="background-color: #395579; position:fixed; top:0; z-index: 9999; width: 100%;  height: 70px;">
-  <div class="container">
+<nav class="align-items-center p-2 navbar navbar-default navbar-fixed-top" style="background-color: #395579; position:fixed; top:0; z-index: 9999; width: 100%;  height: 70px;">
+<!--  <div class="container row justify-content-between">-->
     <div class="ml-3">
       <%= link_to root_path do %>
-        <%= image_tag("youmind_logo", size: "50x50") %>
+        <i class="fas fa-home fa-2x" style="color: white;"></i>
       <% end %>
     </div>
 
-    <div>
-      <h2 style="color: white;">YouMind</h2>
-    </div>
+<!--    <div>-->
+<!--      <h2 style="color: white;">YouMind</h2>-->
+<!--    </div>-->
+    <% if doctor_signed_in? && @chatroom.present? && @videoroom.present? %>
+      <%= link_to doctor_chatroom_path(@chatroom) do %>
+        <i class="fas fa-comments fa-2x" style="color: white;"></i>
+      <% end %>
+      <%= link_to doctor_videoroom_path(@videoroom) do %>
+        <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
+      <% end %>
+    <% elsif patient_signed_in? && @chatroom.present? && @videoroom.present? %>
+      <%= link_to chatroom_path(@chatroom) do %>
+        <i class="fas fa-comments fa-2x" style="color: white;"></i>
+      <% end %>
+      <%= link_to videoroom_path(@videoroom) do %>
+        <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
+      <% end %>
+    <% end %>
 
     <div class="dropdown">
       <button class="btn btn-secondary" style="background-color: #395579; border: none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,5 +53,5 @@
         <% end %>
       </div>
     </div>
-  </div>
+<!--  </div>-->
 </nav>

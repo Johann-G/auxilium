@@ -12,6 +12,7 @@ class Doctor::PatientsController < ApplicationController
   def show
     patient_profile
     @new_consultation = Consultation.new
+    @consultations = @patient.consultations.past.order(date: :desc)
   end
 
   def new
