@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="col-8 mt-3">
-      <h2 class="card-text font-weight-bold text-center mb-2">Dashboard</h2>
+      <h1 class="card-text font-weight-bold text-center mb-2">Dashboard</h1>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h2 class="card-title"><%= @patient.full_name %></h2>
+          <h3 class="card-title font-weight-bold text-center mb-4"><%= @patient.full_name %></h3>
           <p class="card-text"><i class="fas fa-phone mr-3"></i><%= @patient.phone_number %></p>
           <p class="card-text"><i class="fas fa-notes-medical mr-3"></i><%= @patient.avs_number %></p>
           <p class="card-text"><i class="fas fa-address-card mr-3"></i><%= @patient.full_address %></p>
@@ -57,11 +57,11 @@
 
     <div class="mt-5 mb-5">
       <div class="row justify-content-center align-items-center">
-        <h2 class="col-10">Consultations</h2>
+        <h2 class="col-12 font-weight-bold text-center">Consultations</h2>
 
         <% if doctor_signed_in? %>
           <%= link_to new_doctor_patient_consultation_path(@patient) do %>
-            <i class="fas fa-plus-square fa-2x "></i>
+            <p class="col-12 btn btn-primary mt-5">New consultation<i class="fa fa-plus-square ml-3"></i></p>
           <% end %>
         <% end %>
       </div>
