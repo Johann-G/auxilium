@@ -58,13 +58,13 @@
     <div class="mt-5 mb-5">
       <div class="row justify-content-center align-items-center">
         <h2 class="col-12 font-weight-bold text-center">Consultations</h2>
-
-        <% if doctor_signed_in? %>
-          <%= link_to new_doctor_patient_consultation_path(@patient) do %>
-            <p class="col-12 btn btn-primary mt-5">New consultation<i class="fa fa-plus-square ml-3"></i></p>
-          <% end %>
-        <% end %>
       </div>
+
+      <% if doctor_signed_in? %>
+        <%= link_to new_doctor_patient_consultation_path(@patient) do %>
+          <i class="fa fa-plus-circle fa-2x mt-3"></i>
+        <% end %>
+      <% end %>
 
       <ul class="list-group mt-3">
         <% @upcoming_consultations.each do |upcoming_consultation| %>
@@ -76,6 +76,7 @@
           <% end %>
         <% end %>
       </ul>
+
     </div>
 
 

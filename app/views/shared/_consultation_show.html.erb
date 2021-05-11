@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 70px;">
 
-  <div class="row mb-5">
+  <div class="row mb-3">
     <div class="col-2">
       <% doctor_signed_in? ? path = doctor_patient_path(@patient) : path = dashboard_path %>
       <%= link_to path do %>
@@ -12,18 +12,20 @@
     </div>
   </div>
 
+  <h2 class="row justify-content-center mb-5"><%= @consultation.full_date %></h2>
+
   <div class="row justify-content-center">
     <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >
       <div class=" row justify-content-center mt-3 align-items-center">
         <h2 class="col-12 card-text font-weight-bold text-center" style="color: #395579;">Public report</h2>
-        <% if doctor_signed_in? %>
-          <%= link_to edit_doctor_consultation_path(@consultation) do %>
-            <p class="btn btn-primary">Edit report<i class="fas fa-edit col-2" style="color: white;"></i></p>
-          <% end %>
-        <% end %>
       </div>
       <div>
         <p class="card-text mb-3 p-2 text-left d-inline-block h-auto w-100 border border-2" style="border-radius: 10px; border-color: #395579;"><%=  @consultation.public_report.present? ? "#{@consultation.public_report}" : "No report" %></p>
+        <% if doctor_signed_in? %>
+          <%= link_to edit_doctor_consultation_path(@consultation) do %>
+            <i class="fas fa-edit fa-2x col-2"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -33,12 +35,12 @@
       <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >
         <div class="row justify-content-center mt-3 align-items-center">
           <h2 class="col-12 card-text font-weight-bold text-center" style="color: #395579;">Personal notes</h2>
-          <%= link_to edit_doctor_consultation_path(@consultation) do %>
-            <p class="btn btn-primary">Edit notes<i class="fas fa-edit col-2" style="color: white;"></i></p>
-          <% end %>
         </div>
         <div>
           <p class="card-text mb-3 p-2 text-left d-inline-block h-auto w-100 border border-2" style="border-radius: 10px; border-color: #395579;"><%=  @consultation.private_report.present? ? "#{@consultation.private_report}" : "No notes" %></p>
+          <%= link_to edit_doctor_consultation_path(@consultation) do %>
+            <i class="fas fa-edit fa-2x col-2"></i>
+          <% end %>
         </div>
       </div>
     </div>
@@ -48,12 +50,12 @@
     <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >
       <div class=" row justify-content-center mt-3 align-items-center">
         <h2 class="col-12 card-text font-weight-bold text-center" style="color: #395579;">Prescription</h2>
-        <% if doctor_signed_in? %>
-          <%= link_to edit_doctor_consultation_path(@consultation) do %>
-            <p class="btn btn-primary">New drug<i class="fas fa-plus-circle col-2" style="color: 395579; "></i></p>
-          <% end %>
-        <% end %>
       </div>
+      <% if doctor_signed_in? %>
+        <%= link_to edit_doctor_consultation_path(@consultation) do %>
+          <i class="fas fa-plus-circle fa-2x col-2" "></i>
+        <% end %>
+      <% end %>
       <% if !@consultation_medications.empty? %>
         <% @consultation_medications.each do |consultation_medication| %>
           <div class="card-text mb-3 p-2 text-left d-inline-block h-auto w-100 border border-2" style="border-radius: 10px; border-color: #395579;">
@@ -65,10 +67,10 @@
             <% if doctor_signed_in? %>
               <div class="row justify-content-center">
                 <%= link_to doctor_consultation_medication_path(consultation_medication), method: :delete do %>
-                  <i class="fas fa-trash-alt col-6" style="color: red; opacity: 0.7;"></i>
+                  <i class="fas fa-trash-alt fa-2x col-6" style="color: red; opacity: 0.7;"></i>
                 <% end %>
                 <%= link_to edit_doctor_consultation_path(@consultation, consultation_medication: consultation_medication) do %>
-                  <i class="fas fa-edit col-6" style="color: #395579;"></i>
+                  <i class="fas fa-edit fa-2x col-6" style="color: #395579;"></i>
                 <% end %>
               </div>
             <% end %>

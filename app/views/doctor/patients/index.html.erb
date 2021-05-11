@@ -7,24 +7,25 @@
       <% end %>
     </div>
     <div class="col-8 mt-3">
-      <h1 class="card-text font-weight-bold text-center mb-2">My patients</h1>
+      <h1 class="card-text font-weight-bold text-center mb-2">Index</h1>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <%= link_to new_doctor_patient_path do %>
-      <p class="col-12 btn btn-primary mt-5">New patient<i class="fa fa-plus-square ml-3"></i></p>
-    <% end %>
-  </div>
+  <h2 class="row justify-content-center font-weight-bold text-center">Patients</h2>
 
+  <%= link_to new_doctor_patient_path do %>
+    <i class="fa fa-plus-circle fa-2x mt-3"></i>
+  <% end %>
 
-    <ul class="list-group mt-5">
-      <% @patients.each do |patient| %>
-        <%= link_to doctor_patient_path(patient) do %>
-          <li class="list-group-item"><%= patient.full_name %></li>
-        <% end %>
+  <ul class="list-group mt-2">
+    <% @patients.each do |patient| %>
+      <%= link_to doctor_patient_path(patient) do %>
+        <li class="list-group-item"><%= patient.full_name %></li>
       <% end %>
-    </ul>
+    <% end %>
+  </ul>
+
+
 
 </div>
 
