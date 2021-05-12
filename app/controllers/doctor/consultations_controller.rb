@@ -3,12 +3,16 @@ class Doctor::ConsultationsController < ApplicationController
 
   before_action :authenticate_doctor!, raise: false
 
-  before_action :set_patient, only: [ :index, :create  ]
+  before_action :set_patient, only: [ :create, :new  ]
   before_action :set_consultation, only: [ :show, :edit, :update ]
 
   def show
     @patient = @consultation.patient
     super
+  end
+
+  def new
+    @consultation = Consultation.new
   end
 
   def edit
@@ -27,7 +31,7 @@ class Doctor::ConsultationsController < ApplicationController
     @consultation.patient = @patient
     if @consultation.save
       PatientMailer.consultation(@patient, @consultation).deliver_later
-      redirect_to doctor_patient_consultations_path
+      redirect_to doctor_patient_path(@patient)
     else
       render "new"
     end

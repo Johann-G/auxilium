@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :doctor do
     resources :patients, only: [ :index, :show, :new, :create ] do
-      resources :consultations, only: [ :index, :create ]
+      resources :consultations, only: [ :create, :new ]
     end
     resources :consultations, only: [ :show, :edit, :update ] do
       resources :consultation_medications, only: [ :create ]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: "patients#dashboard"
   patch "/activate", to: "patients#activate"
-  resources :consultations, only: [ :index, :show ]
+  resources :consultations, only: [ :show ]
   resources :chatrooms, only: [ :show ] do
     resources :messages, only: [:create]
   end
