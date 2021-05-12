@@ -5,6 +5,7 @@ class Doctor < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :consultations
+  has_many :consultation_medications, through: :consultations
   has_many :patients
 
   has_many :chatrooms

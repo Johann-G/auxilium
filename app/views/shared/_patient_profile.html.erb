@@ -71,8 +71,14 @@
           <li class="list-group-item mt-3 pl-3" style="background-color: #AABAD9;"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%><span class="badge badge-primary badge-pill ml-5">UPCOMING</span></li>
         <% end %>
         <% @past_consultations.each do |past_consultation| %>
-          <%= link_to doctor_consultation_path(past_consultation) do %>
-            <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
+          <% if doctor_signed_in? %>
+            <%= link_to doctor_consultation_path(past_consultation) do %>
+              <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
+            <% end %>
+          <% else %>
+            <%= link_to consultation_path(past_consultation) do %>
+              <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
+            <% end %>
           <% end %>
         <% end %>
       </ul>

@@ -30,11 +30,11 @@ class Doctor::ConsultationMedicationsController < ApplicationController
   private
 
   def set_consultation_medication
-    @consultation_medication = ConsultationMedication.find(params[:id])
+    @consultation_medication = current_doctor.consultation_medications.find(params[:id])
   end
 
   def set_consultation
-    @consultation = Consultation.find(params[:consultation_id])
+    @consultation = current_doctor.consultations.find(params[:consultation_id])
   end
 
   def consultation_medication_params

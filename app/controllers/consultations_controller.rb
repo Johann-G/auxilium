@@ -14,6 +14,6 @@ class ConsultationsController < ApplicationController
   end
 
   def set_consultation
-    @consultation = Consultation.find(params[:id]) if Consultation.find(params[:id]).patient == current_patient
+    @consultation = current_patient.consultations.find(params[:id])
   end
 end
