@@ -3,19 +3,25 @@
   <div class="row mb-5">
     <div class="col-2">
       <%= link_to root_path do %>
-        <i class="fas fa-chevron-circle-left fa-3x mt-3 mb-3" style="color: #395579;"></i>
+        <i class="fas fa-chevron-circle-left fa-2x mt-3 mb-3" style="color: #395579;"></i>
       <% end %>
     </div>
     <div class="col-8 mt-3">
-      <h1 class="card-text font-weight-bold text-center mb-2">Index</h1>
+      <h4 class="card-text font-weight-bold text-center mb-2">Index</h4>
     </div>
   </div>
 
-  <h2 class="row justify-content-center font-weight-bold text-center">Patients</h2>
-
-  <%= link_to new_doctor_patient_path do %>
-    <i class="fa fa-plus-circle fa-2x mt-3"></i>
-  <% end %>
+  <div class="row justify-content-between border-bottom pb-3">
+    <div class="align-self-end">
+      <h5 class="font-weight-bold">Patients</h5>
+    </div>
+    <div class="justiy-content-end">
+      <%= link_to new_doctor_patient_path do %>
+        <button class="btn btn-primary">Add patient</button>
+      <% end %>
+    </div>
+  </div>
+<!--  <hr>-->
 
   <ul class="list-group mt-2">
     <% @patients.each do |patient| %>
