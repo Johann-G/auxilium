@@ -16,11 +16,6 @@ class Doctor::ConsultationsController < ApplicationController
   end
 
   def edit
-    if params[:consultation_medication].present?
-      @consultation_medication = ConsultationMedication.find(params[:consultation_medication])
-    else
-      @consultation_medication = ConsultationMedication.new
-    end
     @medications = Medication.all
     @chatroom = @consultation.patient.chatroom
   end

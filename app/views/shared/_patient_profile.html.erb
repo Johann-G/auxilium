@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 70px;">
 
-  <div class="row mb-5">
+  <div class="row mb-5 align-items-center ">
     <div class="col-2">
       <% doctor_signed_in? ? path = doctor_patients_path : path = root_path %>
       <%= link_to path do %>
@@ -72,11 +72,11 @@
     <% @upcoming_consultations.each do |upcoming_consultation| %>
         <div class="container mt-3 border-bottom">
           <div class="row">
-<!--            <div class="col-4">-->
-<!--              <span class="badge badge-primary badge-pill" style="background-color: red;">UPCOMING</span>-->
-<!--            </div>-->
-            <div class="col-8 offset-4">
-              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%></p>
+            <div class="col-4 offset-4">
+              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.calendar_date}" : "No consultation scheduled"%></p>
+            </div>
+            <div class="col-4">
+              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.time_date}" : "No consultation scheduled"%></p>
             </div>
           </div>
         </div>
@@ -91,9 +91,9 @@
           </div>
           <div class="col-8">
             <% if doctor_signed_in? %>
-                <p><%= past_consultation.full_date %></p>
+                <p><%= past_consultation.calendar_date %></p>
             <% else %>
-                <p><%= past_consultation.full_date %></p>
+                <p><%= past_consultation.calendar_date %></p>
             <% end %>
           </div>
         </div>

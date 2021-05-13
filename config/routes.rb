@@ -10,9 +10,9 @@ Rails.application.routes.draw do
       resources :consultations, only: [ :create, :new ]
     end
     resources :consultations, only: [ :show, :edit, :update ] do
-      resources :consultation_medications, only: [ :create ]
+      resources :consultation_medications, only: [ :new, :create ]
     end
-    resources :consultation_medications, only: [ :destroy , :update ]
+    resources :consultation_medications, only: [ :edit, :destroy , :update ]
     resources :chatrooms, only: [ :show ] do
       resources :messages, only: [:create]
     end
