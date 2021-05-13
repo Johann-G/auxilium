@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 70px;">
 
-  <div class="row mb-5">
+  <div class="row mb-5 align-items-start">
     <div class="col-2">
       <% doctor_signed_in? ? path = doctor_patient_path(@patient) : path = dashboard_path %>
       <%= link_to path do %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="col-8 mt-3">
-      <h1 class="card-text font-weight-bold text-center mb-2">Video</h1>
+      <h6 class="card-text font-weight-bold text-center mb-2">Video</h6>
     </div>
   </div>
 
@@ -34,11 +34,19 @@
     <% end %>
   </div>
 
-  <div class="row justify-content-center mt-5">
+  <% if doctor_signed_in? && !@videoroom.url.present? %>
+    <p class="mt-5 row justify-content-center">Send Google Meet link to your patient</p>
+  <% end %>
+
+  <div class="row justify-content-center mt-1">
     <% if doctor_signed_in? && !@videoroom.url.present? %>
       <%= simple_form_for [ @videoroom ], url: doctor_videoroom_path(@videoroom) do |f| %>
-        <%= f.input :url, as: :text, label: false %>
-        <%= f.submit "Send Video Call URL", class: "btn btn-primary mt-2 mb-3", style: "width: 100%;" %>
+        <div class="field">
+          <%= f.input :url, as: :text, label: false %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Send", class: "btn btn-primary" %>
+        </div>
       <% end %>
     <% end %>
   </div>
