@@ -16,11 +16,6 @@ class Doctor::ConsultationsController < ApplicationController
   end
 
   def edit
-    if params[:consultation_medication].present?
-      @consultation_medication = ConsultationMedication.find(params[:consultation_medication])
-    else
-      @consultation_medication = ConsultationMedication.new
-    end
     @medications = Medication.all
     @chatroom = @consultation.patient.chatroom
   end
@@ -48,11 +43,11 @@ class Doctor::ConsultationsController < ApplicationController
   private
 
   def set_consultation
-    @consultation = Consultation.find(params[:id]) if Consultation.find(params[:id]).doctor == current_doctor
+    @consultation = current_doctor.consultations.find(params[:id])
   end
 
   def set_patient
-    @patient = Patient.find(params[:patient_id]) if Patient.find(params[:patient_id]).doctor == current_doctor
+    @patient = current_doctor.patients.find(params[:patient_id])
   end
 
   def consultation_params

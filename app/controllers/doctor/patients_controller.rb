@@ -35,7 +35,7 @@ class Doctor::PatientsController < ApplicationController
   private
 
   def set_patient
-    @patient = Patient.find(params[:id]) if Patient.find(params[:id]).doctor == current_doctor
+    @patient = current_doctor.patients.find(params[:id])
   end
 
   def patient_params

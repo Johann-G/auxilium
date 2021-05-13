@@ -10,4 +10,10 @@ class MessagesController < ApplicationController
     path = chatroom_path(@chatroom)
     super(resource, path)
   end
+
+  private
+
+  def set_chatroom
+    @chatroom = Chatroom.where(patient: current_patient).find(params[:chatroom_id])
+  end
 end

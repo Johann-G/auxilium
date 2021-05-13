@@ -12,7 +12,7 @@ class VideoroomsController < ApplicationController
   private
 
   def set_videoroom
-    @videoroom = Videoroom.find(params[:id]) if Videoroom.find(params[:id]).patient == current_patient
+    @videoroom = Videoroom.where(patient: current_patient).find(params[:id])
   end
 
 end

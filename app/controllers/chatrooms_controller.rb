@@ -13,7 +13,7 @@ class ChatroomsController < ApplicationController
   private
 
   def set_chatroom
-    @chatroom = Chatroom.find(params[:id]) if Chatroom.find(params[:id]).patient == current_patient
+    @chatroom = Chatroom.where(patient: current_patient).find(params[:id])
   end
 
 end

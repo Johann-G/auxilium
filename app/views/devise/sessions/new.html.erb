@@ -2,6 +2,7 @@
   <div class='d-flex justify-content-center pt-5'>
     <h2>Login</h2>
   </div>
+
   <div class='d-flex justify-content-center'>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -9,7 +10,7 @@
         <%= f.email_field :email, autofocus: true, class: 'form-control'%>
       </div>
       <div class="field">
-        <%= f.label :password, 'Passwprd' %><br />
+        <%= f.label :password, 'Password' %><br />
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 

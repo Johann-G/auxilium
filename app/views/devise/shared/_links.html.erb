@@ -2,7 +2,13 @@
   <%= link_to 'Login', new_session_path(resource_name) %><br />
 <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+<% if request.fullpath == "/patient/sign_in" %>
+  <%= link_to "Are you a doctor?", new_doctor_session_path %><br />
+<% else %>
+  <%= link_to "Are you a patient?", new_patient_session_path %><br />
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' && request.fullpath != "/patient/sign_in" %>
   <%= link_to "Signup", new_registration_path(resource_name) %><br />
 <% end %>
 

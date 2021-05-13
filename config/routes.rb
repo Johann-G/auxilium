@@ -5,16 +5,14 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  # get '/user', to: "pages#dashboard", :as => :user_root TODO redefine after login redirections
-
   namespace :doctor do
     resources :patients, only: [ :index, :show, :new, :create ] do
       resources :consultations, only: [ :create, :new ]
     end
     resources :consultations, only: [ :show, :edit, :update ] do
-      resources :consultation_medications, only: [ :create ]
+      resources :consultation_medications, only: [ :new, :create ]
     end
-    resources :consultation_medications, only: [ :destroy , :update ]
+    resources :consultation_medications, only: [ :edit, :destroy , :update ]
     resources :chatrooms, only: [ :show ] do
       resources :messages, only: [:create]
     end
@@ -37,9 +35,4 @@ Rails.application.routes.draw do
   authenticated :doctor do
     mount Sidekiq::Web => '/sidekiq'
   end
-
-  # require "sidekiq/web"
-  # authenticate :user, ->(user) { user.admin? } do
-  #   mount Sidekiq::Web => '/sidekiq'
-  # end
 end

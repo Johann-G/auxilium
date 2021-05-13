@@ -1,41 +1,44 @@
 <div class="container" style="margin-top: 70px;">
 
-  <div class="row d-flex align-items-center justify-content-center">
+  <div class="row mb-5 align-items-center ">
     <div class="col-2">
       <%= link_to doctor_patients_path do %>
-        <i class="fas fa-chevron-circle-left fa-3x mt-3" style="color: #395579;"></i>
+        <i class="fas fa-chevron-circle-left fa-2x mt-3" style="color: #395579;"></i>
       <% end %>
     </div>
-    <div class="col-10 mt-3">
-      <h2 class="card-text font-weight-bold text-center mb-2">Add patient</h2>
+    <div class="col-8 mt-3">
+      <h6 class="card-text font-weight-bold text-center mb-2">Add patient</h6>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >
-      <div class=" row justify-content-center mt-3 align-items-center">
-        <h2 class="col-10 card-text font-weight-bold text-center" style="color: #395579;">Information</h2>
-        <div class="col-2"></div>
+<!--  <div class="row justify-content-center">-->
+<!--    <div class="card col-11 d-flex justify-content-center mt-3 mb-5 d-inline-block h-auto" style="height: 120px; background-color: white; border-radius: 8px; border: none;" >-->
+<!--      <div class=" row justify-content-center mt-3 align-items-center">-->
+<!--        <h2 class="col-10 card-text font-weight-bold text-center" style="color: #395579;">Information</h2>-->
+<!--        <div class="col-2"></div>-->
+<!--      </div>-->
+  <div class='d-flex justify-content-center'>
+    <%= simple_form_for [ @patient ], url: doctor_patients_path do |f| %>
+      <div class="field">
+        <%= f.label :first_name, 'First name' %><br />
+        <%= f.input :first_name, label: false, autofocus: true, class: 'form-control'%>
       </div>
-      <div class="row justify-content-center">
-        <%= simple_form_for [ @patient ], url: doctor_patients_path, class: "col-12" do |f| %>
-          <div class="mb-3 col-12">
-            <%= f.input :first_name, label: false%>
-          </div>
-          <div class="mb-3 col-12">
-            <%= f.input :last_name, label: false %>
-          </div>
-          <div class="mb-3 col-12">
-            <%= f.input :email, label: false %>
-          </div>
-          <div class='col-12'>
-            <%= f.submit "Save", class: "btn btn-primary mt-2 mb-3" %>
-          </div>
-        <% end %>
+      <div class="field">
+        <%= f.label :last_name, 'Last name' %><br />
+        <%= f.input :last_name, label: false, autofocus: true, class: 'form-control' %>
       </div>
-
-    </div>
+      <div class="field">
+        <%= f.label :email, 'E-mail' %><br />
+        <%= f.input :email, label: false, autofocus: true, class: 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Save", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
+
+<!--    </div>-->
+<!--  </div>-->
 
 
   <br>
