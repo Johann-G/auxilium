@@ -4,11 +4,11 @@
     <div class="col-2">
       <% doctor_signed_in? ? path = doctor_patients_path : path = root_path %>
       <%= link_to path do %>
-        <i class="fas fa-chevron-circle-left fa-3x mt-3 mb-3" style="color: #395579;"></i>
+        <i class="fas fa-chevron-circle-left fa-2x mt-3 mb-3" style="color: #395579;"></i>
       <% end %>
     </div>
     <div class="col-8 mt-3">
-      <h1 class="card-text font-weight-bold text-center mb-2">Dashboard</h1>
+      <h6 class="card-text font-weight-bold text-center mb-2">Dashboard</h6>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h3 class="card-title font-weight-bold text-center mb-4"><%= @patient.full_name %></h3>
+          <p class="card-title font-weight-bold text-center mb-4"><%= @patient.full_name %></p>
           <p class="card-text"><i class="fas fa-phone mr-3"></i><%= @patient.phone_number %></p>
           <p class="card-text"><i class="fas fa-notes-medical mr-3"></i><%= @patient.avs_number %></p>
           <p class="card-text"><i class="fas fa-address-card mr-3"></i><%= @patient.full_address %></p>
@@ -27,7 +27,6 @@
   <% end %>
 
   <% if patient_signed_in? && current_patient.draft? %>
-    <h2 class="row justify-content-center">Please submit your information</h2>
     <div class="row justify-content-center mt-5">
       <%= simple_form_for [ @patient ], url: activate_path, class: "col-12" do |f| %>
         <div class="form-group">
@@ -55,35 +54,53 @@
     </div>
   <% else %>
 
-    <div class="mt-5 mb-5">
-      <div class="row justify-content-center align-items-center">
-        <h2 class="col-12 font-weight-bold text-center">Consultations</h2>
+
+    <div class="row justify-content-between border-bottom pb-3 mt-5">
+      <div class="align-self-end ml-3">
+        <h6 class="font-weight-bold">Consultations</h6>
       </div>
 
       <% if doctor_signed_in? %>
-        <%= link_to new_doctor_patient_consultation_path(@patient) do %>
-          <i class="fa fa-plus-circle fa-2x mt-3"></i>
-        <% end %>
-      <% end %>
-
-      <ul class="list-group mt-3">
-        <% @upcoming_consultations.each do |upcoming_consultation| %>
-          <li class="list-group-item mt-3 pl-3" style="background-color: #AABAD9;"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%><span class="badge badge-primary badge-pill ml-5">UPCOMING</span></li>
-        <% end %>
-        <% @past_consultations.each do |past_consultation| %>
-          <% if doctor_signed_in? %>
-            <%= link_to doctor_consultation_path(past_consultation) do %>
-              <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
-            <% end %>
-          <% else %>
-            <%= link_to consultation_path(past_consultation) do %>
-              <li class="list-group-item mt-3 pl-3"><%= past_consultation.full_date %></li>
-            <% end %>
+        <div class="justiy-content-end mr-3">
+          <%= link_to new_doctor_patient_consultation_path(@patient) do %>
+            <button class="btn btn-primary">Add consultation</button>
           <% end %>
-        <% end %>
-      </ul>
-
+        </div>
+      <% end %>
     </div>
+
+    <% @upcoming_consultations.each do |upcoming_consultation| %>
+        <div class="container mt-3 border-bottom">
+          <div class="row">
+<!--            <div class="col-4">-->
+<!--              <span class="badge badge-primary badge-pill" style="background-color: red;">UPCOMING</span>-->
+<!--            </div>-->
+            <div class="col-8 offset-4">
+              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.full_date}" : "No consultation scheduled"%></p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <% @past_consultations.each do |past_consultation| %>
+      <div class="container mt-3 border-bottom">
+        <div class="row align-items-start">
+          <div class="col-4">
+            <%= link_to doctor_consultation_path(past_consultation) do %>
+              <span class="badge badge-primary badge-pill"">DETAIL</span>
+            <% end %>
+          </div>
+          <div class="col-8">
+            <% if doctor_signed_in? %>
+                <p><%= past_consultation.full_date %></p>
+            <% else %>
+                <p><%= past_consultation.full_date %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
 
 
 
