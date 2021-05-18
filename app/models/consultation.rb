@@ -11,15 +11,15 @@ class Consultation < ApplicationRecord
   # after_create :async_update # Run on create
 
   def full_date
-    "#{self.date.strftime("%d/%m/%Y")} - #{self.date.strftime("%H:%M")}"
+    "#{self.date.strftime("%d.%m.%Y")} - #{self.date.strftime("%Hh%M")}"
   end
 
   def calendar_date
-    "#{self.date.strftime("%d/%m/%Y")}"
+    "#{self.date.strftime("%d.%m.%Y")}"
   end
 
   def time_date
-    "#{self.date.strftime("%H:%M")}"
+    "#{self.date.strftime("%Hh%M")}"
   end
 
   scope :past, -> { where("consultations.date < ?", Time.zone.now) }

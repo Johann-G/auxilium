@@ -17,21 +17,28 @@
     </div>
     <div class="justiy-content-end mr-3">
       <%= link_to new_doctor_patient_path do %>
-        <button class="btn btn-primary">Add patient</button>
+        <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Add patient <i class="ml-2 fas fa-plus"></i></button>
       <% end %>
     </div>
   </div>
 
   <% @patients.each do |patient| %>
     <div class="container mt-3 border-bottom">
-      <div class="row">
-        <div class="col-4">
-          <%= link_to doctor_patient_path(patient) do %>
-            <span class="badge badge-primary badge-pill"">DETAIL</span>
-          <% end %>
+      <div class="row align-items-start pb-3">
+        <div class="col-2">
+          <% patient.active? ? badge_color = "green" : badge_color = "red" %>
+          <span class="badge badge-primary badge-pill" style="background-color: <%= badge_color %>;"><%= patient.active? ? "active" : "draft" %></span>
         </div>
-        <div class="col-8">
-          <p class="font-weight-bold"><%= patient.full_name %></p>
+        <div class="col-8 col-sm-9">
+          <p class="font-weight-bold ml-3"><%= patient.full_name %></p>
+          <p><i class="fas fa-notes-medical mr-3  ml-3"></i><%= patient.avs_number %></p>
+        </div>
+        <div class="col-2 col-sm-1">
+          <div>
+            <%= link_to doctor_patient_path(patient) do %>
+              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
