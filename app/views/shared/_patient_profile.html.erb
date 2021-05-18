@@ -57,7 +57,7 @@
 
     <div class="row justify-content-between border-bottom pb-3 mt-5">
       <div class="align-self-end ml-3">
-        <h6 class="font-weight-bold">Consultations</h6>
+        <h6 class="font-weight-bold">Consultations <i class="ml-3 fas fa-calendar-check"></i></h6>
       </div>
 
       <% if doctor_signed_in? %>
@@ -71,11 +71,11 @@
 
     <% @upcoming_consultations.each do |upcoming_consultation| %>
         <div class="container mt-3 border-bottom">
-          <div class="row align-items-center pb-3">
+          <div class="row align-items-start pb-3">
             <div class="col-2">
-              <span class="badge badge-primary badge-pill" style="background-color: red;">upcoming</span>
+              <span class="badge badge-primary badge-pill" style="background-color: red;">soon</span>
             </div>
-            <div class="col-8 ">
+            <div class="col-8 col-sm-9">
               <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.calendar_date}" : "No consultation scheduled"%></p>
               <p class=""><%= @next_consultation.present? ? "#{@next_consultation.time_date}" : "No consultation scheduled"%></p>
             </div>
@@ -84,19 +84,19 @@
     <% end %>
     <% @past_consultations.each do |past_consultation| %>
       <div class="container mt-3 border-bottom">
-        <div class="row align-items-center pb-3">
-          <div class="col-8 offset-2">
+        <div class="row align-items-start pb-3">
+          <div class="col-8 offset-2 col-sm-9">
             <p class="font-weight-bold"><%= past_consultation.calendar_date %></p>
             <p><%= past_consultation.time_date %></p>
           </div>
-          <div class="col-2">
+          <div class="col-2 col-sm-1">
             <% if doctor_signed_in? %>
               <%= link_to doctor_consultation_path(past_consultation) do %>
-                <button class="btn btn-primary">Detail <i class="ml-2 fas fa-search"></i></button>
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
               <% end %>
             <% else %>
               <%= link_to consultation_path(past_consultation) do %>
-                <button class="btn btn-primary">Detail <i class="ml-2 fas fa-search"></i></button>
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
               <% end %>
             <% end %>
           </div>
