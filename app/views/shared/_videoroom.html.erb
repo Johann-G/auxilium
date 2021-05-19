@@ -4,7 +4,7 @@
     <div class="col-2">
       <% doctor_signed_in? ? path = doctor_patient_path(@patient) : path = dashboard_path %>
       <%= link_to path do %>
-        <i class="fas fa-chevron-circle-left fa-3x mt-3 mb-3" style="color: #395579;"></i>
+        <i class="fas fa-chevron-circle-left fa-2x mt-3 mb-3" style="color: #395579;"></i>
       <% end %>
     </div>
     <div class="col-8 mt-3">
@@ -16,20 +16,20 @@
     <% if doctor_signed_in? %>
       <% if @videoroom.url.present? %>
         <a href=<%= @videoroom.url %> target="_blank">
-          <p class="mt-3 btn btn-primary" style="color: white;">Call<i class="fas fa-phone-volume ml-3" style="color: white;"></i></p>
+          <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Start Call<i class="fas fa-phone-volume ml-3" style="color: white;"></i></button>
         </a>
       <% else %>
         <a href="https://apps.google.com/meet/" target="_blank">
-          <p class="mt-3 btn btn-primary" style="color: white;">Call<i class="fas fa-phone-volume ml-3" style="color: white;"></i></p>
+          <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Google Meet<i class="fas fa-phone-volume ml-3" style="color: white;"></i></button>
         </a>
       <% end %>
     <% else %>
       <% if @videoroom.url.present? %>
         <a href=<%= @videoroom.url %> target="_blank">
-          <p class="mt-3 btn btn-primary" style="color: white;">Call<i class="fas fa-phone-volume ml-3" style="color: white;"></i></p>
+          <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Start Call<i class="fas fa-phone-volume ml-3" style="color: white;"></i></button>
         </a>
       <% else %>
-        <p class="mt-3 btn btn-primary" style="color: white;">No call scheduled<i class="fas fa-phone-volume ml-3" style="color: white;"></i></p>
+        <p class="mt-3 btn btn-primary" style="color: white;">No call scheduled</p>
       <% end %>
     <% end %>
   </div>
@@ -45,7 +45,7 @@
           <%= f.input :url, as: :text, label: false %>
         </div>
         <div class="actions">
-          <%= f.submit "Send", class: "btn btn-primary" %>
+          <%= f.submit "Send", class: "btn btn-primary", style: "background-color: #ff8800; border: none; width: 100%;" %>
         </div>
       <% end %>
     <% end %>

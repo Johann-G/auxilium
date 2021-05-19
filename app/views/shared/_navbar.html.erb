@@ -1,57 +1,50 @@
-<nav class="align-items-center p-2 navbar navbar-default navbar-fixed-top" style="background-color: #395579; position:fixed; top:0; z-index: 9999; width: 100%;  height: 70px;">
-<!--  <div class="container row justify-content-between">-->
+<% params[:controller].include?("doctor") ? bg_color = "#395579" : bg_color = "#00204a" %>
+<nav class="align-items-center p-2 navbar navbar-default navbar-fixed-top" style="background-color: <%= bg_color %>; position:fixed; top:0; z-index: 9999; width: 100%;  height: 70px;">
+  <% if doctor_signed_in? || patient_signed_in? %>
     <div class="ml-3">
       <%= link_to root_path do %>
         <i class="fas fa-home fa-2x" style="color: white;"></i>
       <% end %>
     </div>
+  <% end %>
 
-<!--    <div>-->
-<!--      <h2 style="color: white;">YouMind</h2>-->
-<!--    </div>-->
-    <% if doctor_signed_in? && @chatroom.present? && @videoroom.present? %>
-      <%= link_to doctor_chatroom_path(@chatroom) do %>
-        <i class="fas fa-comments fa-2x" style="color: white;"></i>
-      <% end %>
-      <%= link_to doctor_videoroom_path(@videoroom) do %>
-        <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
-      <% end %>
-    <% elsif patient_signed_in? && @chatroom.present? && @videoroom.present? %>
-      <%= link_to chatroom_path(@chatroom) do %>
-        <i class="fas fa-comments fa-2x" style="color: white;"></i>
-      <% end %>
-      <%= link_to videoroom_path(@videoroom) do %>
-        <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
-      <% end %>
+
+  <% if doctor_signed_in? && @chatroom.present? && @videoroom.present? %>
+    <%= link_to doctor_chatroom_path(@chatroom) do %>
+      <i class="fas fa-comments fa-2x" style="color: white;"></i>
     <% end %>
+    <%= link_to doctor_videoroom_path(@videoroom) do %>
+      <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
+    <% end %>
+  <% elsif patient_signed_in? && @chatroom.present? && @videoroom.present? %>
+    <%= link_to chatroom_path(@chatroom) do %>
+      <i class="fas fa-comments fa-2x" style="color: white;"></i>
+    <% end %>
+    <%= link_to videoroom_path(@videoroom) do %>
+      <i class="fas fa-phone-volume fa-2x" style="color: white;"></i>
+    <% end %>
+  <% end %>
 
+  <% if doctor_signed_in? || patient_signed_in? %>
     <div class="dropdown">
-      <button class="btn btn-secondary" style="background-color: #395579; border: none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-secondary" style="background-color: <%= bg_color %>; border: none;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-user-circle fa-2x"></i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <% if doctor_signed_in?  %>
+          <p class="dropdown-item"><%= current_doctor.email %></p>
+          <div class="dropdown-divider"></div>
           <%= link_to destroy_doctor_session_path, method: :delete do %>
-            <p class="dropdown-item"><%= current_doctor.email %></p>
-            <div class="dropdown-divider"></div>
             <p class="dropdown-item">Logout</p>
           <% end %>
         <% elsif patient_signed_in? %>
-          <%= link_to destroy_patient_session_path, method: :delete do %>
-            <p class="dropdown-item"><%= current_patient.full_name %></p>
-            <div class="dropdown-divider"></div>
-            <p class="dropdown-item">Logout</p>
-          <% end %>
-        <% else %>
-          <%= link_to new_doctor_session_path do %>
-            <p>Doctor login</p>
-          <% end %>
+          <p class="dropdown-item"><%= current_patient.full_name %></p>
           <div class="dropdown-divider"></div>
-          <%= link_to new_patient_session_path do %>
-            <p>Patient login</p>
+          <%= link_to destroy_patient_session_path, method: :delete do %>
+            <p class="dropdown-item">Logout</p>
           <% end %>
         <% end %>
       </div>
     </div>
-<!--  </div>-->
+  <% end %>
 </nav>

@@ -12,12 +12,16 @@
     </div>
   </div>
 
-  <div class="row border-bottom mt-5 ml-3">
-    <h6 class="font-weight-bold">Reports</h6>
+  <div class="row justify-content-between border-bottom pb-3 mt-5">
+    <div class="align-self-end ml-3">
+      <h6 class="font-weight-bold">Reports<i class="ml-3 fas fa-notes-medical"></i></h6>
+    </div>
     <% if doctor_signed_in? %>
-      <%= link_to edit_doctor_consultation_path(@consultation) do %>
-        <i class="fas fa-edit col-2"></i>
-      <% end %>
+      <div class="justiy-content-end mr-3">
+        <%= link_to edit_doctor_consultation_path(@consultation) do %>
+          <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Edit consultation <i class="fas fa-edit col-2"></i></button>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
@@ -41,12 +45,16 @@
     </div>
   <% end %>
 
-  <div class="row border-bottom mt-5 ml-3">
-    <h6 class="font-weight-bold">Prescription</h6>
+  <div class="row justify-content-between border-bottom pb-3 mt-5">
+    <div class="align-self-end ml-3">
+      <h6 class="font-weight-bold">Prescription <i class="ml-3 fas fa-capsules"></i></h6>
+    </div>
     <% if doctor_signed_in? %>
-      <%= link_to new_doctor_consultation_consultation_medication_path(@consultation)	 do %>
-        <i class="fas fa-plus-circle col-2"></i>
-      <% end %>
+      <div class="justiy-content-end mr-3">
+        <%= link_to new_doctor_consultation_consultation_medication_path(@consultation)	 do %>
+          <button class="btn btn-primary" style="background-color: #ff8800; border: none;">Add drug <i class="fas fa-plus-circle col-2"></i></button>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
@@ -63,7 +71,7 @@
                   <i class="fas fa-trash-alt col-6" style="color: red; opacity: 0.7;"></i>
                 <% end %>
                 <%= link_to edit_doctor_consultation_medication_path(consultation_medication) do %>
-                  <i class="fas fa-edit col-6" style="color: #395579;"></i>
+                  <i class="fas fa-edit col-6" style="color: #ff8800;"></i>
                 <% end %>
               </div>
             <% end %>
