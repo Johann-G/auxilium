@@ -23,7 +23,7 @@
   <%= simple_form_for [ @chatroom, @message ], url: doctor_signed_in? ? doctor_chatroom_messages_path(@chatroom) : chatroom_messages_path(@chatroom), class: "row d-flex border border-primary" do |f| %>
     <%= f.input :content, as: :text, label: false, class: "col-11" %>
     <div class='d-flex justify-content-end'>
-      <%= f.submit "Send", class: "btn btn-primary mt-2 mb-3", style: "width: 100%;" %>
+      <%= f.submit "Send", class: "btn btn-primary mt-2 mb-3", style: "width: 100%; background-color: #ff8800; border: none;" %>
     </div>
   <% end %>
 

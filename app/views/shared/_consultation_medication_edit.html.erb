@@ -13,7 +13,7 @@
 
   <div class="row justify-content-between border-bottom mt-5">
     <div class="ml-3">
-      <h6 class="font-weight-bold"><%= "Consultation - #{consultation.calendar_date} " %></h6>
+      <h6 class="font-weight-bold"><%= "Consultation - #{consultation.calendar_date} " %><i class="ml-3 fas fa-calendar-check"></i></h6>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
         <%= f.input :description, as: :text, label: false, autofocus: true, class: 'form-control'%>
       </div>
       <div class="actions">
-        <%= f.submit "Save", class: "btn btn-primary", style: "width: 100%;" %>
+        <%= f.submit "Save", class: "btn btn-primary", style: "width: 100%; background-color: #ff8800; border: none;" %>
       </div>
     <% end %>
   </div>
