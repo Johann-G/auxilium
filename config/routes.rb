@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   end
   resources :videorooms, only: [ :show ]
 
+  get '/redirect', to: 'example#redirect', as: 'redirect'
+  get '/callback', to: 'example#callback', as: 'callback'
+  get '/calendars', to: 'example#calendars', as: 'calendars'
+
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"
