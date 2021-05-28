@@ -23,6 +23,12 @@ module ConsultationsControllerConcern
                                                 })
 
     service.insert_event(consultation.patient.email, event)
+  rescue Google::Apis::AuthorizationError
+    response = client.refresh!
+
+    session[:authorization] = session[:authorization].merge(response)
+
+    retry
   end
 
   def client_options
