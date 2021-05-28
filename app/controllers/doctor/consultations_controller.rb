@@ -26,6 +26,7 @@ class Doctor::ConsultationsController < ApplicationController
     @consultation.patient = @patient
     if @consultation.save
       PatientMailer.consultation(@patient, @consultation).deliver_later
+      send_calendar_invitation(@consultation)
       redirect_to doctor_patient_path(@patient)
     else
       render "new"
