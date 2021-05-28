@@ -27,11 +27,11 @@ Rails.application.routes.draw do
   end
   resources :videorooms, only: [ :show ]
 
-  # get '/redirect', to: 'example#redirect', as: 'redirect'
+  get '/redirect', to: 'example#redirect', as: 'redirect'
   get '/callback', to: 'example#callback', as: 'callback'
-  # get '/calendars', to: 'example#calendars', as: 'calendars'
-  # get '/events/:calendar_id', to: 'example#events', as: 'events', calendar_id: /[^\/]+/
-  # post '/events/:calendar_id', to: 'example#new_event', as: 'new_event', calendar_id: /[^\/]+/
+  get '/calendars', to: 'example#calendars', as: 'calendars'
+  get '/events/:calendar_id', to: 'example#events', as: 'events', calendar_id: /[^\/]+/
+  post '/events/:calendar_id', to: 'example#new_event', as: 'new_event', calendar_id: /[^\/]+/
 
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
