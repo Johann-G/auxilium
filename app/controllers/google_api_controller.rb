@@ -1,4 +1,4 @@
-class ExampleController < ApplicationController
+class GoogleApiController < ApplicationController
 
   def redirect
     client = Signet::OAuth2::Client.new(client_options)
@@ -32,7 +32,7 @@ class ExampleController < ApplicationController
 
     retry
   end
-
+  #
   def events
     client = Signet::OAuth2::Client.new(client_options)
     client.update!(session[:authorization])
@@ -42,26 +42,26 @@ class ExampleController < ApplicationController
 
     @event_list = service.list_events(params[:calendar_id])
   end
-
-  def new_event
-    client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-
-    today = Date.today
-
-    event = Google::Apis::CalendarV3::Event.new({
-                                                  start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
-                                                  end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
-                                                  summary: 'New event!'
-                                                })
-
-    service.insert_event(params[:calendar_id], event)
-
-    redirect_to events_url(calendar_id: params[:calendar_id])
-  end
+  #
+  # def new_event
+  #   client = Signet::OAuth2::Client.new(client_options)
+  #   client.update!(session[:authorization])
+  #
+  #   service = Google::Apis::CalendarV3::CalendarService.new
+  #   service.authorization = client
+  #
+  #   today = Date.today
+  #
+  #   event = Google::Apis::CalendarV3::Event.new({
+  #                                                 start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
+  #                                                 end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
+  #                                                 summary: 'New event!'
+  #                                               })
+  #
+  #   service.insert_event(params[:calendar_id], event)
+  #
+  #   redirect_to events_url(calendar_id: params[:calendar_id])
+  # end
 
   private
 
