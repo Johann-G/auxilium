@@ -14,7 +14,7 @@ class ExampleController < ApplicationController
 
     session[:authorization] = response
 
-    redirect_to calendars_url
+    redirect_to dashboard_path
   end
 
   def calendars
