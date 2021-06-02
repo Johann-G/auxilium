@@ -75,8 +75,8 @@
               <span class="badge badge-primary badge-pill" style="background-color: red;">soon</span>
             </div>
             <div class="col-8 col-sm-9">
-              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{@next_consultation.calendar_date}" : "No consultation scheduled"%></p>
-              <p class=""><%= @next_consultation.present? ? "#{@next_consultation.time_date}" : "No consultation scheduled"%></p>
+              <p class="font-weight-bold"><%= @next_consultation.present? ? "#{upcoming_consultation.calendar_date}" : "No consultation scheduled"%></p>
+              <p class=""><%= @next_consultation.present? ? "#{upcoming_consultation.time_date}" : "No consultation scheduled"%></p>
             </div>
           </div>
         </div>
