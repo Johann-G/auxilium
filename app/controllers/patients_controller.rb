@@ -13,7 +13,7 @@ class PatientsController < ApplicationController
   def activate
     if @patient.update(patient_params)
       @patient.activate!
-      redirect_to redirect_path
+      redirect_to dashboard_path
     else
       render "dashboard"
     end

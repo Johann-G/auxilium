@@ -4,7 +4,8 @@ class PagesController < ApplicationController
 
   def home
     if doctor_signed_in?
-      redirect_to doctor_patients_path
+      # redirect_to doctor_patients_path
+      redirect_to redirect_path
     elsif patient_signed_in?
       redirect_to dashboard_path
     else

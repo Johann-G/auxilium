@@ -14,7 +14,7 @@ class GoogleApiController < ApplicationController
 
     session[:authorization] = response
 
-    redirect_to dashboard_path
+    redirect_to doctor_patients_path
   end
 
   def calendars
