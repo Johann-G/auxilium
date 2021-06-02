@@ -17,12 +17,15 @@ module ConsultationsControllerConcern
     service.authorization = client
 
     event = Google::Apis::CalendarV3::Event.new({
-                                                  start: Google::Apis::CalendarV3::EventDateTime.new(date: consultation.date.to_date),
-                                                  end: Google::Apis::CalendarV3::EventDateTime.new(date: consultation.date.to_date),
-                                                  summary: 'New consultation'
+                                                  'start': Google::Apis::CalendarV3::EventDateTime.new(date: consultation.date.to_date),
+                                                  'end': Google::Apis::CalendarV3::EventDateTime.new(date: consultation.date.to_date),
+                                                  'summary': 'New consultation',
+                                                  'attendees': [
+                                                    {'email': consultation.patient.email}
+                                                  ]
                                                 })
 
-    service.insert_event(consultation.patient.email, event)
+    service.insert_event("primary", event)
   rescue Google::Apis::AuthorizationError
     response = client.refresh!
 
