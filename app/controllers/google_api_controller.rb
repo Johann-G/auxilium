@@ -1,11 +1,11 @@
 class GoogleApiController < ApplicationController
   include GoogleApiControllerConcern
 
-  def redirect
-    client = Signet::OAuth2::Client.new(client_options)
-
-    redirect_to client.authorization_uri.to_s
-  end
+  # def redirect
+  #   client = Signet::OAuth2::Client.new(client_options)
+  #
+  #   redirect_to client.authorization_uri.to_s
+  # end
 
   def callback
     client = Signet::OAuth2::Client.new(client_options)

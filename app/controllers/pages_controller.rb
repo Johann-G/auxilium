@@ -1,11 +1,13 @@
 class PagesController < ApplicationController
   # skip_before_action :authenticate_patient!, only: :home
   # skip_before_action :authenticate_doctor!, only: :home
+  include GoogleApiControllerConcern
 
   def home
     if doctor_signed_in?
       # redirect_to doctor_patients_path
-      redirect_to redirect_path
+      # redirect_to redirect_path
+      redirect_to_google
     elsif patient_signed_in?
       redirect_to dashboard_path
     else

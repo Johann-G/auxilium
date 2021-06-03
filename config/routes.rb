@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
   resources :videorooms, only: [ :show ]
 
-  get '/redirect', to: 'google_api#redirect', as: 'redirect'
+  # get '/redirect', to: 'google_api#redirect', as: 'redirect'
   get '/callback', to: 'google_api#callback', as: 'callback'
   # get '/calendars', to: 'google_api#calendars', as: 'calendars'
   # get '/events/:calendar_id', to: 'google_api#events', as: 'events', calendar_id: /[^\/]+/
