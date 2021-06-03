@@ -1,5 +1,6 @@
 class Doctor::ConsultationsController < ApplicationController
   include ConsultationsControllerConcern
+  include GoogleApiControllerConcern
 
   before_action :authenticate_doctor!, raise: false
 
