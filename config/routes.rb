@@ -29,9 +29,9 @@ Rails.application.routes.draw do
 
   get '/redirect', to: 'google_api#redirect', as: 'redirect'
   get '/callback', to: 'google_api#callback', as: 'callback'
-  get '/calendars', to: 'google_api#calendars', as: 'calendars'
-  get '/events/:calendar_id', to: 'google_api#events', as: 'events', calendar_id: /[^\/]+/
-  post '/events/:calendar_id', to: 'google_api#new_event', as: 'new_event', calendar_id: /[^\/]+/
+  # get '/calendars', to: 'google_api#calendars', as: 'calendars'
+  # get '/events/:calendar_id', to: 'google_api#events', as: 'events', calendar_id: /[^\/]+/
+  # post '/events/:calendar_id', to: 'google_api#new_event', as: 'new_event', calendar_id: /[^\/]+/
 
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
