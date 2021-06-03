@@ -37,6 +37,9 @@ module GoogleApiControllerConcern
   def client_options
     Rails.env.development? ? client_id = ENV["GOOGLE_CLIENT_ID"] : client_id = ENV["GOOGLE_CLIENT_ID_PROD"]
     Rails.env.development? ? client_secret = ENV["GOOGLE_CLIENT_SECRET"] : client_id = ENV["GOOGLE_CLIENT_SECRET_PROD"]
+    puts "Development environment = #{Rails.env.development?}"
+    puts "Production environment = #{Rails.env.production?}"
+
     {
       client_id: client_id,
       client_secret: client_secret,
