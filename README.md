@@ -16,12 +16,12 @@ To test the application, please do the following:
 
 
 
-* TECHNOLOGIES 
+TECHNOLOGIES 
 - Ruby on Rails
 - PostgreSQL
 - Heroku 
 
-* KEY FEATURES 
+KEY FEATURES 
 - Integration of Google Calendar's API
 - Integration of an API to send SMS (Vonage)
 - Implementation of a Websocket chat
